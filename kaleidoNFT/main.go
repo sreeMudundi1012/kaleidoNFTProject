@@ -51,30 +51,30 @@ func main() {
 	client.SetGasPrice(big.NewInt(1875000000))
 
 	//deploying the smart contract
-	// contract, err := client.DeployContract()
-	// if err != nil {
-	// 	fmt.Println("Error connecting to blockchain network", err)
-	// 	panic(err)
-	// }
-	// fmt.Println("Contract address:", contract.Address.Hex())
+	contract, err := client.DeployContract()
+	if err != nil {
+		fmt.Println("Error connecting to blockchain network", err)
+		panic(err)
+	}
+	fmt.Println("Contract address:", contract.Address.Hex())
 
 	//mint an NFT for the given tokenURI
-	// client.SetNonce(big.NewInt(167500))
-	// mintTX, err := contract.MintToken(client, "1")
-	// if err != nil {
-	// 	fmt.Println("Error connecting to blockchain network", err)
-	// 	panic(err)
-	// }
-	// fmt.Println("Mint transaction:", mintTX)
+	client.SetNonce(big.NewInt(167500))
+	mintTX, err := contract.MintToken(client, "1")
+	if err != nil {
+		fmt.Println("Error connecting to blockchain network", err)
+		panic(err)
+	}
+	fmt.Println("Mint transaction:", mintTX)
 
-	// //burn the given tokenID NFT
-	// client.SetNonce(big.NewInt(167987))
-	// burnTX, err := contract.BurnToken(client, big.NewInt(1))
-	// if err != nil {
-	// 	fmt.Println("Error connecting to blockchain network", err)
-	// 	panic(err)
-	// }
-	// fmt.Println("Mint transaction:", burnTX.Hash())
+	//burn the given tokenID NFT
+	client.SetNonce(big.NewInt(167987))
+	burnTX, err := contract.BurnToken(client, big.NewInt(1))
+	if err != nil {
+		fmt.Println("Error connecting to blockchain network", err)
+		panic(err)
+	}
+	fmt.Println("Mint transaction:", burnTX.Hash())
 
 	// Create a mux router
 	r := mux.NewRouter()
